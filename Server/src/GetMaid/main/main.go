@@ -1,2 +1,2 @@
-package GetMaid
+package main
 
