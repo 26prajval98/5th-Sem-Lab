@@ -2,9 +2,9 @@ CREATE TABLE Hirer (
     First_Name VARCHAR(100) NOT NULL,
     Last_Name VARCHAR(100) NOT NULL,
     email VARCHAR(100) NOT NULL,
-    phone_number INT(100) NOT NULL,
+    phone_number VARCHAR(20) NOT NULL,
     Hirer_id VARCHAR(100) NOT NULL,
-    Pin_code INT(100) NOT NULL,
+    Pin_code BIGINT(20) NOT NULL,
     House_No VARCHAR(100) NOT NULL,
     Locality VARCHAR(100) NOT NULL,
     City VARCHAR(100) NOT NULL,
@@ -15,10 +15,10 @@ CREATE TABLE Hirer (
 );CREATE TABLE Maid (
     First_Name VARCHAR(100) NOT NULL,
     Last_Name VARCHAR(100) NOT NULL,
-    phone_number INT(100) NOT NULL,
+    phone_number VARCHAR(20) NOT NULL,
     Bank_account_details VARCHAR(100) NOT NULL,
     Maid_id VARCHAR(100) NOT NULL,
-    Pin_code INT(100) NOT NULL,
+    Pin_code BIGINT(20) NOT NULL,
     Locality VARCHAR(100) NOT NULL,
     City VARCHAR(100) NOT NULL,
     email VARCHAR(100),
@@ -26,8 +26,8 @@ CREATE TABLE Hirer (
     PRIMARY KEY (Maid_id)
 );CREATE TABLE Services (
     service_id VARCHAR(100) NOT NULL,
-    Timings INT(100) NOT NULL,
-    Earning_per_day INT(100) NOT NULL,
+    Timings INT(3) NOT NULL,
+    Earning_per_day INT(10) NOT NULL,
     Hirer_id VARCHAR(100) NOT NULL,
     Maid_id VARCHAR(100) NOT NULL,
     PRIMARY KEY (service_id),
@@ -35,7 +35,7 @@ CREATE TABLE Hirer (
     FOREIGN KEY (Maid_id) REFERENCES Maid(Maid_id)
 );CREATE TABLE User_experience (
     feedback_id VARCHAR(100) NOT NULL,
-    Rating INT(100) NOT NULL,
+    Rating FLOAT(2,1) NOT NULL,
     description VARCHAR(100) NOT NULL,
     Hirer_id VARCHAR(100) NOT NULL,
     Maid_id VARCHAR(100) NOT NULL,
@@ -44,13 +44,13 @@ CREATE TABLE Hirer (
     FOREIGN KEY (Maid_id) REFERENCES Maid(Maid_id)
 );CREATE TABLE Transaction (
     Transaction_Id VARCHAR(100) NOT NULL,
-    Amount INT(100) NOT NULL,
+    Amount BIGINT(20) NOT NULL,
     date_and_time DATETIME NOT NULL,
-    Hirer_id INT(100) NOT NULL,
+    Hirer_id VARCHAR(100) NOT NULL,
     PRIMARY KEY (Transaction_Id, Hirer_id),
     FOREIGN KEY (Hirer_id) REFERENCES Hirer(Hirer_id)
 );CREATE TABLE Maid_Payment (
-    Amount INT(100) NOT NULL,
+    Amount BIGINT(100) NOT NULL,
     Payment_id VARCHAR(100) NOT NULL,
     date DATETIME NOT NULL,
     Maid_id VARCHAR(100) NOT NULL,
@@ -58,7 +58,7 @@ CREATE TABLE Hirer (
     FOREIGN KEY (Maid_id) REFERENCES Maid(Maid_id)
 );CREATE TABLE Requirements (
     Attribute VARCHAR(100) NOT NULL,
-    Timings INT(100) NOT NULL,
+    Timings INT(3) NOT NULL,
     req_id VARCHAR(100) NOT NULL,
     Hirer_id VARCHAR(100) NOT NULL,
     PRIMARY KEY (req_id, Hirer_id),
@@ -74,7 +74,7 @@ CREATE TABLE Hirer (
     PRIMARY KEY (Services, Maid_id),
     FOREIGN KEY (Maid_id) REFERENCES Maid(Maid_id)
 );CREATE TABLE Maid_Work_timings (
-    Work_timings INT(100) NOT NULL,
+    Work_timings INT(3) NOT NULL,
     Maid_id VARCHAR(100) NOT NULL,
     PRIMARY KEY (Work_timings, Maid_id),
     FOREIGN KEY (Maid_id) REFERENCES Maid(Maid_id)
