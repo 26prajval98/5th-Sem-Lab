@@ -69,7 +69,7 @@ CREATE TABLE Hirer (
     PRIMARY KEY (card_details, Hirer_id),
     FOREIGN KEY (Hirer_id) REFERENCES Hirer(Hirer_id)
 );CREATE TABLE Maid_Services (
-    Services VARCHAR(100) NOT NULL,
+    Services VARCHAR(200) NOT NULL,
     Maid_id VARCHAR(100) NOT NULL,
     PRIMARY KEY (Services, Maid_id),
     FOREIGN KEY (Maid_id) REFERENCES Maid(Maid_id)
