@@ -12,7 +12,8 @@ CREATE TABLE Hirer (
     PRIMARY KEY (Hirer_id),
     UNIQUE (email),
     UNIQUE (phone_number)
-);CREATE TABLE Maid (
+);
+CREATE TABLE Maid (
     First_Name VARCHAR(100) NOT NULL,
     Last_Name VARCHAR(100) NOT NULL,
     phone_number VARCHAR(20) NOT NULL,
@@ -24,7 +25,8 @@ CREATE TABLE Hirer (
     email VARCHAR(100),
     Password VARCHAR(100) NOT NULL,
     PRIMARY KEY (Maid_id)
-);CREATE TABLE Services (
+);
+CREATE TABLE Services (
     service_id VARCHAR(100) NOT NULL,
     Timings INT(3) NOT NULL,
     Earning_per_day INT(10) NOT NULL,
@@ -33,7 +35,8 @@ CREATE TABLE Hirer (
     PRIMARY KEY (service_id),
     FOREIGN KEY (Hirer_id) REFERENCES Hirer(Hirer_id),
     FOREIGN KEY (Maid_id) REFERENCES Maid(Maid_id)
-);CREATE TABLE User_experience (
+);
+CREATE TABLE User_experience (
     feedback_id VARCHAR(100) NOT NULL,
     Rating FLOAT(2,1) NOT NULL,
     description VARCHAR(100) NOT NULL,
@@ -42,21 +45,24 @@ CREATE TABLE Hirer (
     PRIMARY KEY (feedback_id, Hirer_id),
     FOREIGN KEY (Hirer_id) REFERENCES Hirer(Hirer_id),
     FOREIGN KEY (Maid_id) REFERENCES Maid(Maid_id)
-);CREATE TABLE Transaction (
+);
+CREATE TABLE Transaction (
     Transaction_Id VARCHAR(100) NOT NULL,
     Amount BIGINT(20) NOT NULL,
     date_and_time DATETIME NOT NULL,
     Hirer_id VARCHAR(100) NOT NULL,
     PRIMARY KEY (Transaction_Id, Hirer_id),
     FOREIGN KEY (Hirer_id) REFERENCES Hirer(Hirer_id)
-);CREATE TABLE Maid_Payment (
+);
+CREATE TABLE Maid_Payment (
     Amount BIGINT(100) NOT NULL,
     Payment_id VARCHAR(100) NOT NULL,
     date DATETIME NOT NULL,
     Maid_id VARCHAR(100) NOT NULL,
     PRIMARY KEY (Payment_id, Maid_id),
     FOREIGN KEY (Maid_id) REFERENCES Maid(Maid_id)
-);CREATE TABLE Requirements (
+);
+CREATE TABLE Requirements (
     Attribute VARCHAR(100) NOT NULL,
     Timings INT(3) NOT NULL,
     req_id VARCHAR(100) NOT NULL,
@@ -68,17 +74,20 @@ CREATE TABLE Hirer (
     Hirer_id VARCHAR(100) NOT NULL,
     PRIMARY KEY (card_details, Hirer_id),
     FOREIGN KEY (Hirer_id) REFERENCES Hirer(Hirer_id)
-);CREATE TABLE Maid_Services (
+);
+CREATE TABLE Maid_Services (
     Services VARCHAR(200) NOT NULL,
     Maid_id VARCHAR(100) NOT NULL,
     PRIMARY KEY (Services, Maid_id),
     FOREIGN KEY (Maid_id) REFERENCES Maid(Maid_id)
-);CREATE TABLE Maid_Work_timings (
+);
+CREATE TABLE Maid_Work_timings (
     Work_timings INT(3) NOT NULL,
     Maid_id VARCHAR(100) NOT NULL,
     PRIMARY KEY (Work_timings, Maid_id),
     FOREIGN KEY (Maid_id) REFERENCES Maid(Maid_id)
-);CREATE TABLE Services_Services_Names (
+);
+CREATE TABLE Services_Services_Names (
     Services_Names VARCHAR(100) NOT NULL,
     service_id VARCHAR(100) NOT NULL,
     PRIMARY KEY (Services_Names, service_id),
