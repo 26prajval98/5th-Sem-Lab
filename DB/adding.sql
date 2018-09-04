@@ -132,7 +132,7 @@ INSERT INTO Maid_Services
 	)
 VALUES
 	(
-		"Dish washing",
+		"Dish washing,Cooking",
 		"M_ID1"
 	);
 -- ADDING USER EXPERIENCE
@@ -153,5 +153,44 @@ VALUES
 		"Awesome maid",
 		"M_ID1"
 	);
-	
+-- ADDING SERVICES SERVICES NAMES
+
+INSERT INTO Services_Services_Names
+	(
+		Services_Names,
+		service_id
+	)
+VALUES
+	(
+		"Dish washing",
+		"S_ID1"
+	),
+	(
+		"Cooking",
+		"S_ID2"
+	);
+
+-- ADDING SERVICES
+
+INSERT INTO Services
+	(
+		Timings,
+		Earning per day,
+		Hirer_id,
+		Maid_id
+	)
+VALUES
+	(
+		1,
+		1000,
+		"H_ID1",
+		"M_ID1"
+	),
+	(
+		2,
+		500,
+		"H_ID1",
+		"M_ID1"
+	);
+
 
