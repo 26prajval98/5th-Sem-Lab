@@ -37,27 +37,26 @@ VALUES
 		"H_ID1"
     );
 -- ADDING TRANSACTION
-INSERT INTO TRANSACTION
+INSERT INTO Transaction
 	(
 		Transaction_Id,
 		Hirer_id,
 		Amount,
-		date and time
+		date_and_time
 	)
 VALUES
 	(
 		"T_ID1",
 		"H_ID1",
 		1000,
-		'2018-8-18',
-
+		'2018-08-18 15:55:39'
 	);
 -- ADDING REQUIREMENTS
-INSERT INTO REQUIREMENTS
+INSERT INTO Requirements
 	(
 		req_id,
 		Hirer_id,
-		Atrribute,
+		Attribute,
 		Timings
 	)
 
@@ -65,9 +64,8 @@ VALUES
 	(
 		"H_REQ_ID1",
 		"H_ID1",
-		"attributes",
+		"Cleaning",
 		2
-
 	);
 
 
@@ -101,14 +99,18 @@ VALUES
 
 
 --ADDING MAID_PAYMENT
-INSERT INTO Maid_payment(
-        card_details,
-		Hirer_id
+INSERT INTO Maid_Payment(
+        Amount,
+		Payment_id,
+        date,
+        Maid_id
     )
 VALUES
     (
-        "SBI26771",
-		"H_ID1"
+        1000,
+		"P_ID01",
+        '2018-08-18 15:55:39',
+        "M_ID1"
     );
 
 -- ADDING MAID WORK TIMINGS
@@ -149,7 +151,7 @@ VALUES
 	(
 		"F_ID1",
 		"H_ID1",
-		4.5
+		4.5,
 		"Awesome maid",
 		"M_ID1"
 	);
@@ -174,19 +176,22 @@ VALUES
 
 INSERT INTO Services
 	(
+        service_id,
 		Timings,
-		Earning per day,
+		Earning_per_day,
 		Hirer_id,
 		Maid_id
 	)
 VALUES
 	(
+        'S_ID01',
 		1,
 		1000,
 		"H_ID1",
 		"M_ID1"
 	),
 	(
+        'S_ID02',
 		2,
 		500,
 		"H_ID1",
