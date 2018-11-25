@@ -1,0 +1,67 @@
+CREATE TABLE Faculty
+(
+    FacultyId int(30) primary key,
+    name varchar(30) not null,
+    age int(4) not null,
+    id varchar(30) unique,
+    website varchar(30),
+    mobile int(10),
+    gender ENUM('m', 'f')
+)
+
+-- 1
+desc Faculty
+
+alter TABLE Faculty
+add department varchar(30)
+
+insert into Faculty(FacultyId, name, age, id, website, mobile, gender, department)
+values (1, "A", 40, "A@insti.com", "A.com", 99999999, "f", "CS"), (2, "Acc", 40, "Acc@insti.com", "A.com", 99999999, "f", "CS"), (3, "kcc", 40, "kcc@insti.com", "A.com", 99999999, "f", "CS"), 
+(4, "CS", 43, "CS@insti.com", "A.com", 99999999, "f", "Comps"),
+(5, "EC", 28, "EC@insti.com", "A.com", 99999999, "f", "EC"),
+(6, "PP", 32, "PP@insti.com", "A.com", 99999999, "f", "EC"),
+(7, "TT", 55, "TT@insti.com", "A.com", 99999999, "f", "EC"),
+(8, "KK", 58, "KK@insti.com", "A.com", 99999999, "f", "EC")
+
+-- 2
+update Faculty 
+set department = "Comps"
+where department = "CS"
+
+-- 3
+Rename TABLE faculty to facultydetails
+
+alter TABLE facultydetails change name fname varchar(30)
+
+-- 4
+
+SELECT * from facultyDetails where fname LIKE "__c%"
+
+SELECT * from facultyDetails where fname LIKE= "k__%"
+
+-- 5
+insert into facultydetails(FacultyId, fname, age, id, website, mobile, gender, department) values 
+(4, "CS", 43, "CS@insti.com", "A.com", 99999999, "f", "Comps"),
+(5, "EC", 28, "EC@insti.com", "A.com", 99999999, "f", "EC"),
+(6, "PP", 32, "PP@insti.com", "A.com", 99999999, "f", "EC"),
+(7, "TT", 55, "TT@insti.com", "A.com", 99999999, "f", "EC"),
+(8, "KK", 58, "KK@insti.com", "A.com", 99999999, "f", "EC")
+
+SELECT e.fname from facultydetails e where e.age > (SELECT max(age) from facultydetails where department="Comps")
+
+-- 6
+
+SELECT * from facultydetails order by age
+
+SELECT * from facultydetails order by age DESC
+
+SELECT * from facultydetails order by age, FacultyId desc
+
+-- 7
+
+SELECT * from facultydetails where age = 32
+SELECT fname as name, website from facultydetails where FacultyId > 4
+SELECT * from facultydetails where FacultyId >= 3 and FacultyId <=5
+SELECT fname as name, website from facultydetails where age between 30 and 40
+SELECT fname as name, website from facultydetails where age = 30 or age = 35 or age = 40
+SELECT fname as name, website from facultydetails where FacultyId = 3 or FacultyId = 5 or FacultyId = 7
